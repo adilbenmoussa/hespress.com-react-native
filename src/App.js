@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import {
-    SyleSheet,
+    View,
     Text
 } from 'react-native';
+
+import Header from './components/Header';
 
 class App extends Component {
 
     render() {
         return (
-            <Text> Salam Hesspress </Text>
+            <View>
+                <Header />
+                <Text> Salam Hesspress </Text>
+            </View>
         );
     }
 }
