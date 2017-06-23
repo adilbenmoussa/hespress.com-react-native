@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import {
-    View,
-    Text
+    View
 } from 'react-native';
 
-import Header from './components/Header';
+import ArticlesPages from './Pages/ArticlesPage';
 
 class App extends Component {
 
     render() {
         return (
             <View>
-                <Header />
-                <Text> Salam Hesspress </Text>
+                <ArticlesPages />
             </View>
         );
     }
