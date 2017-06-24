@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
 import {
-    View
+    View,
+    StatusBar
 } from 'react-native';
 
-import ArticlesPages from './Pages/ArticlesPage';
+import ArticlesPage from './Pages/ArticlesPage';
+import { colors } from './config/colors';
+import configureLocale from './config/locale';
+
+
+// init the moment localization.
+configureLocale();
 
 class App extends Component {
 
     render() {
         return (
             <View>
-                <ArticlesPages />
+                <StatusBar
+                    backgroundColor={colors.primary}
+                    barStyle="light-content"
+                    />
+                <ArticlesPage />
             </View>
         );
     }

@@ -1,10 +1,10 @@
 # hespress.com-react-native
 
 ## Lesson 4 - [Youtube video]:
-* [HTML Encoding](https://www.npmjs.com/package/html-entities)
-* [StatusBar](https://facebook.github.io/react-native/docs/statusbar.html)
-* Arabic Fonts
-* [Moment](https://momentjs.com/docs/#/i18n/)
+* [HTML Encoding - تصحيح النص](https://www.npmjs.com/package/html-entities)
+* [StatusBar - شريط الحالة](https://facebook.github.io/react-native/docs/statusbar.html)
+* Arabic Fonts - الخطوط العربية
+* [Moment - لحظة](https://momentjs.com/docs/#/i18n/)
 
  
 ## Lesson 3 - [Youtube video](https://youtu.be/OkQ8JszXjpM):
@@ -22,5 +22,9 @@
 * Install React-Native - التثبت
 
 
+### Result Lesson 4:
+<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/Result-Lesson-3.png" width="400">
+
+
 ### Result Lesson 3:
-<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/lessons/3-list-data/src/images/Result-Lesson-3.png" width="400">
+<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/Result-Lesson-4.png" width="400">

@@ -36,6 +36,10 @@
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* hesspressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* hesspressTests.m */; };
+		338889F91EFEE55F0070FADD /* Al-Jazeera-Arabic-Bold.woff in Resources */ = {isa = PBXBuildFile; fileRef = 338889F71EFEE55F0070FADD /* Al-Jazeera-Arabic-Bold.woff */; };
+		338889FA1EFEE55F0070FADD /* Al-Jazeera-Arabic-Bold.woff in Resources */ = {isa = PBXBuildFile; fileRef = 338889F71EFEE55F0070FADD /* Al-Jazeera-Arabic-Bold.woff */; };
+		338889FB1EFEE55F0070FADD /* Al-Jazeera-Arabic-Regular.woff in Resources */ = {isa = PBXBuildFile; fileRef = 338889F81EFEE55F0070FADD /* Al-Jazeera-Arabic-Regular.woff */; };
+		338889FC1EFEE55F0070FADD /* Al-Jazeera-Arabic-Regular.woff in Resources */ = {isa = PBXBuildFile; fileRef = 338889F81EFEE55F0070FADD /* Al-Jazeera-Arabic-Regular.woff */; };
 		4BA92FE8DB58403FB0263274 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EE86CB9044942118D7B97B2 /* MaterialIcons.ttf */; };
 		5E6414BB147E416A87C1DC9F /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 746B5B4632EB46A48720991A /* Entypo.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -287,6 +291,8 @@
 		21DB30753FE04116B6F8ECC6 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* hesspress-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hesspress-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* hesspress-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "hesspress-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		338889F71EFEE55F0070FADD /* Al-Jazeera-Arabic-Bold.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Al-Jazeera-Arabic-Bold.woff"; sourceTree = "<group>"; };
+		338889F81EFEE55F0070FADD /* Al-Jazeera-Arabic-Regular.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Al-Jazeera-Arabic-Regular.woff"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		626B8D1AE35342C4B1096D8C /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		746B5B4632EB46A48720991A /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
@@ -434,6 +440,7 @@
 		13B07FAE1A68108700A75B9A /* hesspress */ = {
 			isa = PBXGroup;
 			children = (
+				338889DA1EFEE54B0070FADD /* Assets */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -468,6 +475,15 @@
 				333A297A1EFDB0C500BA55D4 /* libRNVectorIcons.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		338889DA1EFEE54B0070FADD /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				338889F71EFEE55F0070FADD /* Al-Jazeera-Arabic-Bold.woff */,
+				338889F81EFEE55F0070FADD /* Al-Jazeera-Arabic-Regular.woff */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -931,6 +947,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				338889FC1EFEE55F0070FADD /* Al-Jazeera-Arabic-Regular.woff in Resources */,
+				338889FA1EFEE55F0070FADD /* Al-Jazeera-Arabic-Bold.woff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,8 +957,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				338889F91EFEE55F0070FADD /* Al-Jazeera-Arabic-Bold.woff in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				5E6414BB147E416A87C1DC9F /* Entypo.ttf in Resources */,
+				338889FB1EFEE55F0070FADD /* Al-Jazeera-Arabic-Regular.woff in Resources */,
 				6D2ECFE194384CF7BAFF25E7 /* EvilIcons.ttf in Resources */,
 				02CE59E5FDA347F29B63E80F /* FontAwesome.ttf in Resources */,
 				F59D66DF19E04F5CA0361627 /* Foundation.ttf in Resources */,

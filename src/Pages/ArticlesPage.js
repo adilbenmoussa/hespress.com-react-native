@@ -5,9 +5,15 @@ import {
     Image,
     Text
 } from 'react-native';
+import { XmlEntities as Entities } from  'html-entities';
+import moment from 'moment';
+
 import { Badge } from 'react-native-elements';
 import Header from '../components/Header';
+import ArabicText from '../components/ArabicText';
+import { colors } from '../config/colors';
 
+const entities = new Entities();
 
 class ArticlesPages extends Component {
 
@@ -28,9 +34,12 @@ class ArticlesPages extends Component {
                 <View style={styles.textContainer}>
                     <Badge
                         containerStyle={styles.badge}>
-                        <Text style={styles.badgeText}>{item.category_name}</Text>
+                        <ArabicText textStyle={styles.badgeText}>{item.category_name}</ArabicText>
                     </Badge>
-                    <Text style={styles.title}>{item.title}</Text>
+                    <View>
+                        <ArabicText textStyle={styles.dateCreated}>{moment(item.created).fromNow()}</ArabicText>
+                        <ArabicText textStyle={styles.title}>{entities.decode(item.title)}</ArabicText>
+                    </View>
                 </View>
             </View>
         );
@@ -55,13 +64,14 @@ class ArticlesPages extends Component {
 const styles = {
     container: {
         position: 'relative',
-        backgroundColor: 'rgba(0,0,0, 0)',
-        padding: 3
+        backgroundColor: 'rgba(0,0,0,0)',
+        paddingTop: 2,
+        paddingHorizontal: 2
     },
     textContainer: {
         position: 'absolute',
-        top: 20,
-        bottom: 20,
+        top: 10,
+        bottom: 30,
         right: 10,
         flex: 1,
         flexDirection: 'column',
@@ -69,27 +79,37 @@ const styles = {
         alignItems: 'flex-end',
     },
     title: {
-        color: 'white',
+        color: colors.white,
         fontSize: 16,
         fontWeight: 'bold',
+        textAlign: 'right',
+        lineHeight: 20,
+    },
+    dateCreated: {
+        color: colors.white,
+        fontSize: 14,
         textAlign: 'right'
     },
     badge: {
-        backgroundColor: 'rgba(205, 220, 57,0.6)',
+        backgroundColor: 'rgba(205, 220, 57,0.5)',
         borderRadius: 4,
-        height: 26
+        height: 30,
+        padding: 6
     },
     badgeText: {
-        color: 'white',
-        fontSize: 14,
+        color: colors.white,
+        fontSize: 16,
         fontWeight: 'bold'
     },
     image: {
-        height: 180
+        height: 250,
     },
     imageOverlay: {
-        backgroundColor: 'rgba(0,0,0,0.4)',
-        height: 180
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        height: 250
+    },
+    bottomTextGroup: {
+        top: 10
     }
 };
 

@@ -7,6 +7,8 @@ import {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+import ArabicText from './ArabicText';
+import { colors } from '../config/colors';
 
 class Header extends Component {
 
@@ -20,7 +22,7 @@ class Header extends Component {
                         size={25} />
                 </TouchableWithoutFeedback>
                 <View>
-                    <Text style={styles.title}> Jami3 AlAkhbar</Text>
+                    <ArabicText textStyle={styles.title}>جميع الاخبار</ArabicText>
                 </View>
 
                  <TouchableWithoutFeedback>
@@ -40,13 +42,13 @@ const styles = StyleSheet.create({
         height: 60,
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: 'blue',
+        backgroundColor: colors.primary,
         paddingHorizontal: 15,
-        paddingTop: 10
+        paddingTop: 18
     },
     title: {
-        color: 'white',
-        fontSize: 14,
+        color: colors.white,
+        fontSize: 18,
         fontWeight: 'bold'
     }
 });
