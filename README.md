@@ -1,6 +1,12 @@
 # hespress.com-react-native
 
-## Lesson 4 - [Youtube video]:
+## Lesson 5 - Youtube video:
+* [Side Menu - القائمة الجانبية](https://github.com/react-native-community/react-native-side-menu)
+* [Fontawesome](https://paulferrett.com/fontawesome-favicon/)
+* [Colors](http://materialuicolors.co/?ref=flatuicolors.com)
+
+
+## Lesson 4 - [Youtube video](https://www.youtube.com/watch?v=xm_aeBvuN00&index):
 * [HTML Encoding - تصحيح النص](https://www.npmjs.com/package/html-entities)
 * [StatusBar - شريط الحالة](https://facebook.github.io/react-native/docs/statusbar.html)
 * Arabic Fonts - الخطوط العربية
