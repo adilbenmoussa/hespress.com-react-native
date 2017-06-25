@@ -1,0 +1,37 @@
+[
+    {
+        "id": -1,
+        "name": "جميع الاخبار",
+        "color": "#E91E63",
+        "icon": "viadeo",
+        "query_params": "search_exclude_cid=22,23"
+    },
+    {
+        "id": -2,
+        "name": "الاخبار الرئيسية",
+        "color": "#9C27B0",
+        "icon": "map-o",
+        "query_params": "search_tag_id=2"
+    },
+    {
+        "id": -3,
+        "name": "الاكثر تعليقا",
+        "color": "#673AB7",
+        "icon": "ravelry" ,
+        "query_params": "search_sort_by=most_commented&search_search_date=1&search_order=descending"
+    },
+    {
+        "id": -4,
+        "name": "الاكثر تقييما",
+        "color": "#F44336",
+        "icon": "eercast" ,
+        "query_params": "search_before_after=1&search_search_date=1&search_sort_by=vote_num"
+    },
+    {
+        "id": -5,
+        "name": "الاكثر مشاهدة",
+        "color": "#F44336",
+        "icon": "first-order" ,
+        "query_params": "search_before_after=1&search_search_date=1&search_sort_by=most_popular"
+    }
+]

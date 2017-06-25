@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
     View,
     FlatList,
@@ -21,7 +21,6 @@ class ArticlesPages extends Component {
 
     _renderItem({item}) {
         const imageUri = `http://s1.hespress.com/files/${item.image}`;
-        console.log('imageUri', imageUri);
         return (
             <View style={styles.container}>
                 <Image
@@ -45,12 +44,11 @@ class ArticlesPages extends Component {
         );
     }
 
-
     render() {
         const articles = require('../assets/data/articles.json').articles;
         return (
-            <View>
-                <Header />
+            <View style={styles.mainContainer}>
+                <Header toggleLeftMenu={this.props.toggleLeftMenu} />
                 <FlatList
                     data={articles}
                     keyExtractor={this._keyExtractor}
@@ -61,7 +59,16 @@ class ArticlesPages extends Component {
     }
 }
 
+ArticlesPages.propTypes = {
+    toggleLeftMenu: PropTypes.func.isRequired
+}
+
+
+
 const styles = {
+    mainContainer: {
+        backgroundColor: colors.white
+    },
     container: {
         position: 'relative',
         backgroundColor: 'rgba(0,0,0,0)',
@@ -112,6 +119,7 @@ const styles = {
         top: 10
     }
 };
+
 
 
 export default ArticlesPages;
