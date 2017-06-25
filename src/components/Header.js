@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
     Text,
     View,
@@ -13,9 +13,12 @@ import { colors } from '../config/colors';
 class Header extends Component {
 
     render() {
+        const { toggleLeftMenu } = this.props;
         return (
             <View style={styles.container}>
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback
+                    onPress={() => toggleLeftMenu()}
+                >
                     <Icon 
                         name="bars"
                         color="white"
@@ -34,6 +37,10 @@ class Header extends Component {
             </View>
         );
     }
+}
+
+Header.propTypes = {
+    toggleLeftMenu: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({
