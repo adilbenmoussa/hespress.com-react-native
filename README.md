@@ -1,6 +1,6 @@
 # hespress.com-react-native
 
-## Lesson 4 - [Youtube video]:
+## Lesson 4 - [Youtube video](https://www.youtube.com/watch?v=xm_aeBvuN00&index):
 * [HTML Encoding - تصحيح النص](https://www.npmjs.com/package/html-entities)
 * [StatusBar - شريط الحالة](https://facebook.github.io/react-native/docs/statusbar.html)
 * Arabic Fonts - الخطوط العربية
