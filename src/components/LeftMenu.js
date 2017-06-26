@@ -12,8 +12,9 @@ const window = Dimensions.get('window');
 
 class LeftMenu extends Component {
     renderItems(items) {
+        const { selectedCategory } = this.props;
         return items.map((item) =>
-            <View key={item.id} style={styles.textWithIcon}>
+            <View key={item.id} style={[styles.textWithIcon, (selectedCategory.id === item.id) && {backgroundColor: colors.selectedCategory}]}>
                 <View style={styles.withIcon}>
                     <ArabicText
                         onPress={() => this.props.onLeftMenuItemSelected(item)}
@@ -31,10 +32,9 @@ class LeftMenu extends Component {
     }
 
     render() {
-        const filters = require('../assets/data/filters.json');
-        const categories = require('../assets/data/categories.json');
+        const {filters, categories} = this.props;
         return (
-            <ScrollView scrollToTop= {false} style={styles.scrollContainer}>
+            <ScrollView scrollToTop={false} style={styles.scrollContainer}>
                 {this.renderItems(filters)}
                 <View style={styles.sectionContainer}>
                     <ArabicText textStyle={styles.sectionText}>الاقسام</ArabicText>
@@ -46,7 +46,10 @@ class LeftMenu extends Component {
 }
 
 LeftMenu.propTypes = {
-    onLeftMenuItemSelected: PropTypes.func.isRequired
+    onLeftMenuItemSelected: PropTypes.func.isRequired,
+    selectedCategory: PropTypes.object.isRequired,
+    categories: PropTypes.array.isRequired,
+    filters: PropTypes.array.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -56,6 +59,7 @@ const styles = StyleSheet.create({
         height: window.height,
         backgroundColor: colors.secondary,
         padding: 20,
+        paddingLeft: 0
     },
     text: {
         color: colors.white,

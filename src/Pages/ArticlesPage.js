@@ -11,7 +11,7 @@ import moment from 'moment';
 import { Badge } from 'react-native-elements';
 import Header from '../components/Header';
 import ArabicText from '../components/ArabicText';
-import { colors } from '../config/colors';
+import { colors, hexWithOpacity } from '../config/colors';
 
 const entities = new Entities();
 
@@ -19,8 +19,26 @@ class ArticlesPages extends Component {
 
     _keyExtractor = (item, index) => item.id;
 
+    _getColorById(categoryId) {
+        const { selectedCategory, categories } = this.props;
+        let color;
+        if(selectedCategory.id < 0) {
+            const category = categories.find((cat) => cat.id === categoryId);
+            if(!category){
+                console.error('categoryId not found', categoryId);
+            }
+            color = category.color;
+        }
+        else{
+            color = selectedCategory.color;
+        }
+        
+        return color;
+    }
+
     _renderItem({item}) {
         const imageUri = `http://s1.hespress.com/files/${item.image}`;
+        color = hexWithOpacity(this._getColorById(item.category_id), 0.5);
         return (
             <View style={styles.container}>
                 <Image
@@ -29,10 +47,9 @@ class ArticlesPages extends Component {
                     >
                     <View style={styles.imageOverlay} />
                 </Image>
-
                 <View style={styles.textContainer}>
                     <Badge
-                        containerStyle={styles.badge}>
+                        containerStyle={[styles.badge, {backgroundColor: color}]}>
                         <ArabicText textStyle={styles.badgeText}>{item.category_name}</ArabicText>
                     </Badge>
                     <View>
@@ -45,14 +62,16 @@ class ArticlesPages extends Component {
     }
 
     render() {
-        const articles = require('../assets/data/articles.json').articles;
+    const { articles, selectedCategory, toggleLeftMenu } = this.props;
         return (
             <View style={styles.mainContainer}>
-                <Header toggleLeftMenu={this.props.toggleLeftMenu} />
+                <Header 
+                    title={selectedCategory.name}
+                    toggleLeftMenu={toggleLeftMenu} />
                 <FlatList
                     data={articles}
                     keyExtractor={this._keyExtractor}
-                    renderItem={this._renderItem}
+                    renderItem={this._renderItem.bind(this)}
                     />
             </View>
         );
@@ -60,7 +79,11 @@ class ArticlesPages extends Component {
 }
 
 ArticlesPages.propTypes = {
-    toggleLeftMenu: PropTypes.func.isRequired
+    toggleLeftMenu: PropTypes.func.isRequired,
+    selectedCategory: PropTypes.object.isRequired,
+    articles: PropTypes.array.isRequired,
+    categories: PropTypes.array.isRequired,
+    filters: PropTypes.array.isRequired, 
 }
 
 

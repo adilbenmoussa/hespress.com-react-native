@@ -6,8 +6,8 @@
         "icon": "adn"
     },
     {
-        "id": 110,
-        "name": "فيديو",
+        "id": 109,
+        "name": "رمضانيات",
         "color": "#9C27B0",
         "icon": "anchor"
     },
@@ -15,84 +15,90 @@
         "id": 1,
         "name": "سياسة",
         "color": "#673AB7",
-        "icon": "apple" 
+        "icon": "apple"
     },
     {
         "id": 4,
         "name": "مجتمع",
         "color": "#F44336",
-        "icon": "flash" 
+        "icon": "flash"
     },
     {
         "id": 2,
         "name": "جهات",
         "color": "#3F51B5",
-        "icon": "bar-chart"  
+        "icon": "bar-chart"
     },
     {
         "id": 5,
         "name": "مال وأعمال",
-        "color": "#2196F3" ,
-        "icon": "money" 
+        "color": "#2196F3",
+        "icon": "money"
     },
     {
         "id": 21,
         "name": "مغاربة العالم",
         "color": "#CDDC39",
-        "icon": "yelp"  
+        "icon": "yelp"
     },
     {
         "id": 16,
         "name": "السلطة الرابعة",
-        "color": "#FF9800" ,
-        "icon": "gears" 
+        "color": "#FF9800",
+        "icon": "gears"
     },
     {
         "id": 9,
         "name": "حوادث",
         "color": "#FF5722",
-        "icon": "btc"  
+        "icon": "btc"
     },
     {
         "id": 6,
         "name": "فن وثقافة",
-        "color": "#CDDC39" ,
-        "icon": "motorcycle" 
+        "color": "#CDDC39",
+        "icon": "motorcycle"
     },
     {
         "id": 18,
         "name": "تمازيغت",
         "color": "#e67e22",
-        "icon": "wrench"  
+        "icon": "wrench"
     },
     {
         "id": 8,
         "name": "مدارات",
         "color": "#e67e22",
-        "icon": "bed"  
+        "icon": "bed"
     },
     {
         "id": 7,
         "name": "رياضة",
         "color": "#3498db",
-        "icon": "yc"  
+        "icon": "yc"
     },
     {
         "id": 22,
         "name": "كُتّاب وآراء",
         "color": "#1abc9c",
-        "icon": "gg"  
+        "icon": "gg"
     },
     {
         "id": 23,
         "name": "كُتّاب منبر هسبريس",
         "color": "#2ecc71",
-        "icon": "hand-grab-o"  
+        "icon": "hand-grab-o"
     },
     {
         "id": 17,
         "name": "خارج الحدود",
         "color": "#8e44ad",
-        "icon": "handshake-o"  
+        "icon": "handshake-o"
+    },
+    {
+        "id": 110,
+        "name": "فيديو",
+        "color": "#9C27B0",
+        "icon": "anchor"
     }
 ]

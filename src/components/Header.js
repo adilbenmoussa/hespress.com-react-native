@@ -13,7 +13,7 @@ import { colors } from '../config/colors';
 class Header extends Component {
 
     render() {
-        const { toggleLeftMenu } = this.props;
+        const { toggleLeftMenu, title } = this.props;
         return (
             <View style={styles.container}>
                 <TouchableWithoutFeedback
@@ -25,7 +25,7 @@ class Header extends Component {
                         size={25} />
                 </TouchableWithoutFeedback>
                 <View>
-                    <ArabicText textStyle={styles.title}>جميع الاخبار</ArabicText>
+                    <ArabicText textStyle={styles.title}>{title}</ArabicText>
                 </View>
 
                  <TouchableWithoutFeedback>
@@ -40,7 +40,8 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    toggleLeftMenu: PropTypes.func.isRequired
+    toggleLeftMenu: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired
 }
 
 const styles = StyleSheet.create({

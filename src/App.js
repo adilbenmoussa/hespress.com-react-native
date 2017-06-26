@@ -13,6 +13,11 @@ import LeftMenu from './components/LeftMenu';
 // init the moment localization.
 configureLocale();
 
+const filters = require('./assets/data/filters.json');
+const categories = require('./assets/data/categories.json');
+const articles = require('./assets/data/articles.json').articles;
+
+
 class App extends Component {
 
     constructor(props) {
@@ -20,7 +25,10 @@ class App extends Component {
 
         this.state = {
             isOpen: false,
-            selectedCategory: null
+            selectedCategory: filters[0],
+            categories,
+            filters,
+            articles
         }
     }
 
@@ -42,9 +50,14 @@ class App extends Component {
     }
 
     render() {
-        const menu = <LeftMenu  onLeftMenuItemSelected={this.onLeftMenuItemSelected} />;
+        const { categories, selectedCategory, filters, articles} = this.state;
+        const menu = <LeftMenu
+            categories={categories}
+            selectedCategory={selectedCategory}
+            filters={filters}
+            onLeftMenuItemSelected={this.onLeftMenuItemSelected.bind(this)} />;
         return (
-            <SideMenu 
+            <SideMenu
                 menu={menu}
                 isOpen={this.state.isOpen}
                 onChange={(isOpen) => this.updateMenuState(isOpen)}>
@@ -52,9 +65,13 @@ class App extends Component {
                     backgroundColor={colors.primary}
                     barStyle="light-content"
                     />
-                <ArticlesPage 
+                <ArticlesPage
+                    articles={articles}
+                    categories={categories}
+                    selectedCategory={selectedCategory}
+                    filters={filters}
                     toggleLeftMenu={() => this.toggle()}
-                />
+                    />
             </SideMenu>
         );
     }

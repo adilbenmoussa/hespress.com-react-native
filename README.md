@@ -31,6 +31,9 @@
 ### Lesson 1 - [Youtube video](https://youtu.be/S3KGpVb7TIY):
 * Install React-Native - التثبت
 
+### Result Lesson 6:
+<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/Result-Lesson-6-1.png" width="300">
+<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/Result-Lesson-6-2.png" width="300">
 
 ### Result Lesson 5:
 <img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/Result-Lesson-5.png" width="400">
