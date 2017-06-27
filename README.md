@@ -1,6 +1,6 @@
 # hespress.com-react-native
 
-## Lesson 6 - Youtube video:
+## Lesson 6 - [Youtube video](https://youtu.be/Lr5ZW_lF-1E):
 * Side Menu, Select Category - القائمة اختر القسم
 * Category colors
 
