@@ -1,6 +1,11 @@
 # hespress.com-react-native
 
-## Lesson 6 - Youtube video:
+## Lesson 7 - Youtube video:
+* [Fetch live articles - مقالات حية]
+* [Redux](http://redux.js.org/)
+* [Redux-Promise](https://github.com/acdlite/redux-promise)
+
+## Lesson 6 - [Youtube video](https://youtu.be/Lr5ZW_lF-1E):
 * Side Menu, Select Category - القائمة اختر القسم
 * Category colors
 
