@@ -2,20 +2,23 @@ import React, { Component } from 'react';
 import {
     StatusBar
 } from 'react-native';
+import { Provider } from 'react-redux';
+import { head } from 'lodash';
 
 import SideMenu from 'react-native-side-menu';
 import ArticlesPage from './Pages/ArticlesPage';
 import { colors } from './config/colors';
 import configureLocale from './config/locale';
 import LeftMenu from './components/LeftMenu';
+import store from './store';
+import { filters } from './config/data';
 
+
+import { actionCreators as categoryActionCreators } from './reducers/categoryReducer';
+import { actionCreators as articlesActionCreators } from './reducers/articlesReducer';
 
 // init the moment localization.
 configureLocale();
-
-const filters = require('./assets/data/filters.json');
-const categories = require('./assets/data/categories.json');
-const articles = require('./assets/data/articles.json').articles;
 
 
 class App extends Component {
@@ -24,12 +27,12 @@ class App extends Component {
         super(props);
 
         this.state = {
-            isOpen: false,
-            selectedCategory: filters[0],
-            categories,
-            filters,
-            articles
+            isOpen: false
         }
+
+        const firstFilter = head(filters);
+        store.dispatch(categoryActionCreators.select(firstFilter));
+        store.dispatch(articlesActionCreators.getArticles(firstFilter));
     }
 
     toggle() {
@@ -42,22 +45,19 @@ class App extends Component {
         this.setState({ isOpen })
     }
 
-    onLeftMenuItemSelected(category) {
+    onLeftMenuItemSelected() {
         this.setState({
             isOpen: false,
-            selectedCategory: category
         });
     }
 
     render() {
-        const { categories, selectedCategory, filters, articles} = this.state;
+        const selectedCategory = store.getState().selectedCategory;
         const menu = <LeftMenu
-            categories={categories}
-            selectedCategory={selectedCategory}
-            filters={filters}
             onLeftMenuItemSelected={this.onLeftMenuItemSelected.bind(this)} />;
         return (
-            <SideMenu
+            <Provider store={store}>
+                <SideMenu
                 menu={menu}
                 isOpen={this.state.isOpen}
                 onChange={(isOpen) => this.updateMenuState(isOpen)}>
@@ -66,13 +66,11 @@ class App extends Component {
                     barStyle="light-content"
                     />
                 <ArticlesPage
-                    articles={articles}
-                    categories={categories}
                     selectedCategory={selectedCategory}
-                    filters={filters}
                     toggleLeftMenu={() => this.toggle()}
                     />
             </SideMenu>
+            </Provider>
         );
     }
 }

@@ -3,15 +3,20 @@ import {
     View,
     FlatList,
     Image,
-    Text
+    Text,
+    ActivityIndicator,
+    Dimensions
 } from 'react-native';
-import { XmlEntities as Entities } from  'html-entities';
+import { XmlEntities as Entities } from 'html-entities';
 import moment from 'moment';
+import { connect } from 'react-redux';
 
 import { Badge } from 'react-native-elements';
 import Header from '../components/Header';
 import ArabicText from '../components/ArabicText';
 import { colors, hexWithOpacity } from '../config/colors';
+import { categories } from '../config/data';
+const window = Dimensions.get('window');
 
 const entities = new Entities();
 
@@ -20,19 +25,19 @@ class ArticlesPages extends Component {
     _keyExtractor = (item, index) => item.id;
 
     _getColorById(categoryId) {
-        const { selectedCategory, categories } = this.props;
+        const { selectedCategory } = this.props;
         let color;
-        if(selectedCategory.id < 0) {
+        if (selectedCategory.id < 0) {
             const category = categories.find((cat) => cat.id === categoryId);
-            if(!category){
-                console.error('categoryId not found', categoryId);
+            if (!category) {
+                console.log('categoryId not found', categoryId);
             }
             color = category.color;
         }
-        else{
+        else {
             color = selectedCategory.color;
         }
-        
+
         return color;
     }
 
@@ -49,7 +54,7 @@ class ArticlesPages extends Component {
                 </Image>
                 <View style={styles.textContainer}>
                     <Badge
-                        containerStyle={[styles.badge, {backgroundColor: color}]}>
+                        containerStyle={[styles.badge, { backgroundColor: color }]}>
                         <ArabicText textStyle={styles.badgeText}>{item.category_name}</ArabicText>
                     </Badge>
                     <View>
@@ -61,17 +66,44 @@ class ArticlesPages extends Component {
         );
     }
 
+    _renderListEmptyComponent() {
+        const { isPending, error } = this.props;
+        if (isPending) {
+            return (
+                <ActivityIndicator
+                    animating={true}
+                    color={colors.primary}
+                    size="large"
+                    style={styles.activityIndicator}
+                    />
+            )
+        }
+
+        if (error) {
+            return (
+                <View><Text>{error}</Text></View>
+            )
+        }
+
+        return <View textStyle={styles.artclesNoFoundContainer}>
+            <ArabicText textStyle={styles.artclesNoFound}>
+                لم يتم العثور على أية مقال
+            </ArabicText>
+        </View>
+    }
+
     render() {
-    const { articles, selectedCategory, toggleLeftMenu } = this.props;
+        const { articles, selectedCategory, toggleLeftMenu } = this.props;
         return (
             <View style={styles.mainContainer}>
-                <Header 
+                <Header
                     title={selectedCategory.name}
                     toggleLeftMenu={toggleLeftMenu} />
                 <FlatList
                     data={articles}
                     keyExtractor={this._keyExtractor}
                     renderItem={this._renderItem.bind(this)}
+                    ListEmptyComponent={this._renderListEmptyComponent.bind(this)}
                     />
             </View>
         );
@@ -79,13 +111,12 @@ class ArticlesPages extends Component {
 }
 
 ArticlesPages.propTypes = {
+    // isPending: PropTypes.bool.isPending,
+    // error: PropTypes.object,
     toggleLeftMenu: PropTypes.func.isRequired,
     selectedCategory: PropTypes.object.isRequired,
     articles: PropTypes.array.isRequired,
-    categories: PropTypes.array.isRequired,
-    filters: PropTypes.array.isRequired, 
 }
-
 
 
 const styles = {
@@ -136,13 +167,50 @@ const styles = {
     },
     imageOverlay: {
         backgroundColor: 'rgba(0,0,0,0.3)',
-        height: 250
+        height: 250,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    mediaPlay: {
     },
     bottomTextGroup: {
         top: 10
+    },
+    activityIndicatorContainer: {
+        width: window.width,
+        height: window.height,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 70,
+        backgroundColor: colors.white
+    },
+    activityIndicator: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: window.width,
+        height: window.height,
+    },
+    artclesNoFoundContainer: {
+        paddingTop: 100,
+        alignItems: 'center',
+        width: window.width,
+        height: window.height,
+    },
+    artclesNoFound: {
+        fontSize: 24,
+        color: colors.secondary,
     }
 };
 
+const mapStateToProps = (state) => {
+    return {
+        articles: state.articles.articles,
+        isPending: state.articles.isPending,
+        error: state.articles.error
+    };
+}
 
+const ConntectedArticlesPages = connect(mapStateToProps)(ArticlesPages);
 
-export default ArticlesPages;
+export default ConntectedArticlesPages;

@@ -4,6 +4,7 @@
 * [Fetch live articles - مقالات حية]
 * [Redux](http://redux.js.org/)
 * [Redux-Promise-middleware](https://github.com/acdlite/redux-promise)
+* [Allow Arbitrary loads](https://stackoverflow.com/questions/38077273/react-native-fetch-network-request-failed-not-using-localhost)
 * `
     "axios": "^0.16.2",
     "react-redux": "^5.0.5",
