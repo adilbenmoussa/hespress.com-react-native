@@ -5,19 +5,32 @@ import {
     View,
     Dimensions
 } from 'react-native';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 import ArabicText from './ArabicText';
 import { colors } from '../config/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const window = Dimensions.get('window');
+import { categories, filters } from '../config/data';
+import { actionCreators as categoryActionCreators } from '../reducers/categoryReducer';
+import { actionCreators as articlesActionCreators } from '../reducers/articlesReducer';
+
 
 class LeftMenu extends Component {
     renderItems(items) {
-        const { selectedCategory } = this.props;
+        const { select, getArticles, selectedCategory } = this.props;
+        const onLeftMenuItemSelected = (category) => {
+            select(category);
+            getArticles(category);
+            this.props.onLeftMenuItemSelected(category)
+        }
+
         return items.map((item) =>
-            <View key={item.id} style={[styles.textWithIcon, (selectedCategory.id === item.id) && {backgroundColor: colors.selectedCategory}]}>
+            <View key={item.id} style={[styles.textWithIcon, (selectedCategory.id === item.id) && { backgroundColor: colors.selectedCategory }]}>
                 <View style={styles.withIcon}>
                     <ArabicText
-                        onPress={() => this.props.onLeftMenuItemSelected(item)}
+                        onPress={() => onLeftMenuItemSelected(item)}
                         textStyle={styles.text}>{item.name}
                     </ArabicText>
                     <Icon
@@ -32,7 +45,6 @@ class LeftMenu extends Component {
     }
 
     render() {
-        const {filters, categories} = this.props;
         return (
             <ScrollView scrollToTop={false} style={styles.scrollContainer}>
                 {this.renderItems(filters)}
@@ -47,9 +59,7 @@ class LeftMenu extends Component {
 
 LeftMenu.propTypes = {
     onLeftMenuItemSelected: PropTypes.func.isRequired,
-    selectedCategory: PropTypes.object.isRequired,
-    categories: PropTypes.array.isRequired,
-    filters: PropTypes.array.isRequired,
+    selectedCategory: PropTypes.object.isRequired
 };
 
 const styles = StyleSheet.create({
@@ -97,5 +107,19 @@ const styles = StyleSheet.create({
     }
 });
 
+const mapStateToProps = (state) => {
+    return {
+        selectedCategory: state.selectedCategory
+    }
+}
 
-export default LeftMenu;
+const mapDispatchToPros = (dispatch) => ({
+    ...bindActionCreators({
+        ...categoryActionCreators,
+        ...articlesActionCreators
+    }, dispatch)
+});
+
+const ConnectedLeftMenu = connect(mapStateToProps, mapDispatchToPros)(LeftMenu)
+
+export default ConnectedLeftMenu;
