@@ -52,7 +52,6 @@ class App extends Component {
     }
 
     render() {
-        const selectedCategory = store.getState().selectedCategory;
         const menu = <LeftMenu
             onLeftMenuItemSelected={this.onLeftMenuItemSelected.bind(this)} />;
         return (
@@ -66,7 +65,6 @@ class App extends Component {
                     barStyle="light-content"
                     />
                 <ArticlesPage
-                    selectedCategory={selectedCategory}
                     toggleLeftMenu={() => this.toggle()}
                     />
             </SideMenu>

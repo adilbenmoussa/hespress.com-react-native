@@ -1,6 +1,10 @@
 # hespress.com-react-native
 
-## Lesson 7 - Youtube video:
+## Lesson 8 - Youtube video:
+* Pull To Refresh Content - القائمة اختر القسم
+* Video Icon
+
+## Lesson 7 - [Youtube video](https://www.youtube.com/watch?v=Mn0zlcr2UlM):
 * [Fetch live articles - مقالات حية]
 * [Redux](http://redux.js.org/)
 * [Redux-Promise-middleware](https://github.com/acdlite/redux-promise)

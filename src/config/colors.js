@@ -3,8 +3,8 @@ export const colors = {
     secondary: '#364654',
     selectedCategory: '#192636',
 
-    white: '#fff',
-    black: '#000'
+    white: '#ffffff',
+    black: '#000000'
 };
 
 export const hexWithOpacity = (hex, opacity) => {

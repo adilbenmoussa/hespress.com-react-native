@@ -10,12 +10,16 @@ import {
 import { XmlEntities as Entities } from 'html-entities';
 import moment from 'moment';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { Badge } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Header from '../components/Header';
 import ArabicText from '../components/ArabicText';
 import { colors, hexWithOpacity } from '../config/colors';
-import { categories } from '../config/data';
+import { categories, categoriesWithMedia } from '../config/data';
+import { actionCreators as articlesActionCreators } from '../reducers/articlesReducer';
+
 const window = Dimensions.get('window');
 
 const entities = new Entities();
@@ -44,13 +48,22 @@ class ArticlesPages extends Component {
     _renderItem({item}) {
         const imageUri = `http://s1.hespress.com/files/${item.image}`;
         color = hexWithOpacity(this._getColorById(item.category_id), 0.5);
+        const mediaColor = hexWithOpacity(colors.white, 0.5);
+        const hasMedia = categoriesWithMedia.indexOf(item.category_id) >= 0;
         return (
             <View style={styles.container}>
                 <Image
                     style={styles.image}
                     source={{ uri: imageUri }}
                     >
-                    <View style={styles.imageOverlay} />
+                    <View style={styles.imageOverlay}>
+                        {hasMedia && <Icon 
+                            name="youtube-play"
+                            color={mediaColor}
+                            size={42}
+                            />
+                        }
+                    </View>
                 </Image>
                 <View style={styles.textContainer}>
                     <Badge
@@ -92,6 +105,11 @@ class ArticlesPages extends Component {
         </View>
     }
 
+    _handleRefresh() {
+        const { getArticles, selectedCategory } = this.props;
+        getArticles(selectedCategory);
+    }
+
     render() {
         const { articles, selectedCategory, toggleLeftMenu } = this.props;
         return (
@@ -104,6 +122,8 @@ class ArticlesPages extends Component {
                     keyExtractor={this._keyExtractor}
                     renderItem={this._renderItem.bind(this)}
                     ListEmptyComponent={this._renderListEmptyComponent.bind(this)}
+                    refreshing={false}
+                    onRefresh={this._handleRefresh.bind(this)}
                     />
             </View>
         );
@@ -111,8 +131,6 @@ class ArticlesPages extends Component {
 }
 
 ArticlesPages.propTypes = {
-    // isPending: PropTypes.bool.isPending,
-    // error: PropTypes.object,
     toggleLeftMenu: PropTypes.func.isRequired,
     selectedCategory: PropTypes.object.isRequired,
     articles: PropTypes.array.isRequired,
@@ -121,7 +139,10 @@ ArticlesPages.propTypes = {
 
 const styles = {
     mainContainer: {
-        backgroundColor: colors.white
+        backgroundColor: colors.white,
+         width: window.width,
+        height: window.height,
+        flex: 1,
     },
     container: {
         position: 'relative',
@@ -171,8 +192,6 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center'
     },
-    mediaPlay: {
-    },
     bottomTextGroup: {
         top: 10
     },
@@ -207,10 +226,17 @@ const mapStateToProps = (state) => {
     return {
         articles: state.articles.articles,
         isPending: state.articles.isPending,
-        error: state.articles.error
+        error: state.articles.error,
+        selectedCategory: state.selectedCategory
     };
 }
 
-const ConntectedArticlesPages = connect(mapStateToProps)(ArticlesPages);
+const mapDispatchToPros = (dispatch) => ({
+    ...bindActionCreators({
+        ...articlesActionCreators
+    }, dispatch)
+});
+
+const ConntectedArticlesPages = connect(mapStateToProps, mapDispatchToPros)(ArticlesPages);
 
 export default ConntectedArticlesPages;
