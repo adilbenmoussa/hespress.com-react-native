@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "html-entities": "^1.2.1",
     "react": "16.0.0-alpha.12",
     "react-native": "0.45.1",
     "react-native-elements": "^0.13.0",
@@ -18,7 +17,12 @@
     "react-redux": "^5.0.5",
     "redux": "^3.7.1",
     "redux-logger": "^3.0.6",
-    "redux-promise-middleware": "^4.2.1"
+    "redux-promise-middleware": "^4.2.1",
+    "react-dom": "^15.4.2",
+    "entities": "^1.1.1",
+    "htmlparser2-without-node-native": "^3.9.0",
+    "react-native-image-header": "^1.0.1",
+    "react-native-image-header-scroll-view": "^0.6.1"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",

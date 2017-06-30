@@ -8,7 +8,6 @@ import {
     Dimensions,
     TouchableWithoutFeedback
 } from 'react-native';
-import { XmlEntities as Entities } from 'html-entities';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -21,10 +20,9 @@ import ArabicText from '../components/ArabicText';
 import { colors, hexWithOpacity } from '../config/colors';
 import { categories, categoriesWithMedia } from '../config/data';
 import { actionCreators as articlesActionCreators } from '../reducers/articlesReducer';
+import { imageUriByName, decodeHtml } from '../config/html';
 
 const window = Dimensions.get('window');
-
-const entities = new Entities();
 
 class ArticlesPages extends Component {
 
@@ -48,7 +46,6 @@ class ArticlesPages extends Component {
     }
 
     _renderItem({item}) {
-        const imageUri = `http://s1.hespress.com/files/${item.image}`;
         color = hexWithOpacity(this._getColorById(item.category_id), 0.5);
         const mediaColor = hexWithOpacity(colors.white, 0.5);
         const hasMedia = categoriesWithMedia.indexOf(item.category_id) >= 0;
@@ -61,7 +58,7 @@ class ArticlesPages extends Component {
                 <View style={styles.container}>
                     <Image
                         style={styles.image}
-                        source={{ uri: imageUri }}
+                        source={{ uri: imageUriByName(item.image) }}
                         >
                         <View style={styles.imageOverlay}>
                             {hasMedia && <Icon
@@ -79,7 +76,7 @@ class ArticlesPages extends Component {
                         </Badge>
                         <View>
                             <ArabicText textStyle={styles.dateCreated}>{moment(item.created).fromNow()}</ArabicText>
-                            <ArabicText textStyle={styles.title}>{entities.decode(item.title)}</ArabicText>
+                            <ArabicText textStyle={styles.title}>{decodeHtml(item.title)}</ArabicText>
                         </View>
                     </View>
                 </View>

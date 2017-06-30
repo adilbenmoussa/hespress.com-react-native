@@ -2,6 +2,8 @@ export const colors = {
     primary: '#23438b',
     secondary: '#364654',
     selectedCategory: '#192636',
+    titleColor: '#2196F3',
+    autorColor: '#E91E63',
 
     white: '#ffffff',
     black: '#000000'
