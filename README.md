@@ -1,6 +1,11 @@
 # hespress.com-react-native
 
-## Lesson 8 - Youtube video:
+## Lesson 9 - Youtube video:
+* Navigation - Article Details View - التنقل - تفاصيل المقال
+* [react-native-router-flux](https://github.com/aksonov/react-native-router-flux)
+
+
+## Lesson 8 - [Youtube video](https://youtu.be/YjJ0psaT-f0):
 * Pull To Refresh Content - القائمة اختر القسم
 * Video Icon
 

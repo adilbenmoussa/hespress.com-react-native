@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import {
-    StatusBar
 } from 'react-native';
 import { Provider } from 'react-redux';
 import { head } from 'lodash';
 
-import SideMenu from 'react-native-side-menu';
-import ArticlesPage from './Pages/ArticlesPage';
-import { colors } from './config/colors';
+import {
+    Router,
+    Scene,
+    Actions,
+} from 'react-native-router-flux';
+import { connect } from 'react-redux';
+
 import configureLocale from './config/locale';
-import LeftMenu from './components/LeftMenu';
 import store from './store';
 import { filters } from './config/data';
+import MainPage from './Pages/MainPage';
+import ArticleDetailsPage from './Pages/ArticleDetailsPage';
 
 
 import { actionCreators as categoryActionCreators } from './reducers/categoryReducer';
@@ -19,6 +23,17 @@ import { actionCreators as articlesActionCreators } from './reducers/articlesRed
 
 // init the moment localization.
 configureLocale();
+
+const scenes = Actions.create(
+    <Scene key="root">
+        <Scene key="MainPage" component={MainPage} hideNavBar={true} />
+        <Scene key="ArticleDetailsPage" component={ArticleDetailsPage} hideNavBar={false} />
+    </Scene>
+);
+
+// --- Create connected Router if you want dispatch() method.
+// --- Or you can just use vanilla Router
+const ConnectedRouter = connect()(Router);
 
 
 class App extends Component {
@@ -35,39 +50,10 @@ class App extends Component {
         store.dispatch(articlesActionCreators.getArticles(firstFilter));
     }
 
-    toggle() {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
-
-    updateMenuState(isOpen) {
-        this.setState({ isOpen })
-    }
-
-    onLeftMenuItemSelected() {
-        this.setState({
-            isOpen: false,
-        });
-    }
-
     render() {
-        const menu = <LeftMenu
-            onLeftMenuItemSelected={this.onLeftMenuItemSelected.bind(this)} />;
         return (
             <Provider store={store}>
-                <SideMenu
-                menu={menu}
-                isOpen={this.state.isOpen}
-                onChange={(isOpen) => this.updateMenuState(isOpen)}>
-                <StatusBar
-                    backgroundColor={colors.primary}
-                    barStyle="light-content"
-                    />
-                <ArticlesPage
-                    toggleLeftMenu={() => this.toggle()}
-                    />
-            </SideMenu>
+                <ConnectedRouter scenes={scenes} />
             </Provider>
         );
     }

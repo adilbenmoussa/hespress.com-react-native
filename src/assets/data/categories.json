@@ -72,6 +72,12 @@
         "icon": "wrench"
     },
     {
+        "id": 20,
+        "name": "بيئة وعلوم",
+        "color": "#9DDDD0",
+        "icon": "money"
+    },
+    {
         "id": 8,
         "name": "مدارات",
         "color": "#e67e22",
@@ -118,5 +124,11 @@
         "name": "عين على الفايسبوك",
         "color": "#3498db",
         "icon": "yc"
+    },
+    {
+        "id": 107,
+        "name": "منوعات",
+        "color": "#9C3330",
+        "icon": "anchor"
     }
 ]

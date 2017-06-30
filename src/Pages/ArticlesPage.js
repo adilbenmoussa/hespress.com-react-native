@@ -5,12 +5,14 @@ import {
     Image,
     Text,
     ActivityIndicator,
-    Dimensions
+    Dimensions,
+    TouchableWithoutFeedback
 } from 'react-native';
 import { XmlEntities as Entities } from 'html-entities';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Actions } from 'react-native-router-flux';
 
 import { Badge } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -50,32 +52,39 @@ class ArticlesPages extends Component {
         color = hexWithOpacity(this._getColorById(item.category_id), 0.5);
         const mediaColor = hexWithOpacity(colors.white, 0.5);
         const hasMedia = categoriesWithMedia.indexOf(item.category_id) >= 0;
+        // Actions.
         return (
-            <View style={styles.container}>
-                <Image
-                    style={styles.image}
-                    source={{ uri: imageUri }}
-                    >
-                    <View style={styles.imageOverlay}>
-                        {hasMedia && <Icon 
-                            name="youtube-play"
-                            color={mediaColor}
-                            size={42}
-                            />
-                        }
-                    </View>
-                </Image>
-                <View style={styles.textContainer}>
-                    <Badge
-                        containerStyle={[styles.badge, { backgroundColor: color }]}>
-                        <ArabicText textStyle={styles.badgeText}>{item.category_name}</ArabicText>
-                    </Badge>
-                    <View>
-                        <ArabicText textStyle={styles.dateCreated}>{moment(item.created).fromNow()}</ArabicText>
-                        <ArabicText textStyle={styles.title}>{entities.decode(item.title)}</ArabicText>
+            <TouchableWithoutFeedback
+                style={{flex:1}}
+                onPress={() => Actions.ArticleDetailsPage(item)}
+            >
+                <View style={styles.container}>
+                    <Image
+                        style={styles.image}
+                        source={{ uri: imageUri }}
+                        >
+                        <View style={styles.imageOverlay}>
+                            {hasMedia && <Icon
+                                name="youtube-play"
+                                color={mediaColor}
+                                size={42}
+                                />
+                            }
+                        </View>
+                    </Image>
+                    <View style={styles.textContainer}>
+                        <Badge
+                            containerStyle={[styles.badge, { backgroundColor: color }]}>
+                            <ArabicText textStyle={styles.badgeText}>{item.category_name}</ArabicText>
+                        </Badge>
+                        <View>
+                            <ArabicText textStyle={styles.dateCreated}>{moment(item.created).fromNow()}</ArabicText>
+                            <ArabicText textStyle={styles.title}>{entities.decode(item.title)}</ArabicText>
+                        </View>
                     </View>
                 </View>
-            </View>
+            </TouchableWithoutFeedback>
+
         );
     }
 
@@ -140,7 +149,7 @@ ArticlesPages.propTypes = {
 const styles = {
     mainContainer: {
         backgroundColor: colors.white,
-         width: window.width,
+        width: window.width,
         height: window.height,
         flex: 1,
     },
