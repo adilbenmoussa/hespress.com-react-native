@@ -23,7 +23,6 @@ class ArticlesDetailsPage extends Component {
     }
 
     render() {
-        console.log('itemthis.props', this.props);
         const { image, author, title, body } = this.props;
         return (
             <View style={styles.mainContainer}>
@@ -48,8 +47,6 @@ class ArticlesDetailsPage extends Component {
         );
     }
 }
-
-// 
 
 ArticlesDetailsPage.propTypes = {
     selectedCategory: PropTypes.object.isRequired,

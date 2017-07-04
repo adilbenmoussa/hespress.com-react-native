@@ -5,6 +5,7 @@ import {
     TouchableWithoutFeedback,
     StyleSheet,
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ArabicText from './ArabicText';
@@ -28,7 +29,9 @@ class Header extends Component {
                     <ArabicText textStyle={styles.title}>{title}</ArabicText>
                 </View>
 
-                 <TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback
+                        onPress={() => Actions.SearchPage()}
+                 >
                     <Icon 
                         name="search"
                         color="white"

@@ -22,7 +22,8 @@
     "entities": "^1.1.1",
     "htmlparser2-without-node-native": "^3.9.0",
     "react-native-image-header": "^1.0.1",
-    "react-native-image-header-scroll-view": "^0.6.1"
+    "react-native-image-header-scroll-view": "^0.6.1",
+    "redux-saga": "^0.15.4"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",

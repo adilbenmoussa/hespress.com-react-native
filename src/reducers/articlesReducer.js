@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { queryByCategory } from '../config/api';
 
-const actionTypes = {
+export const actionTypes = {
     GET_ARTICLES: 'ARTICLES/GET_ARTICLES',
     GET_ARTICLES_PENDING: 'ARTICLES/GET_ARTICLES_PENDING',
     GET_ARTICLES_FULFILLED: 'ARTICLES/GET_ARTICLES_FULFILLED',
-    GET_ARTICLES_REJECTED: 'ARTICLES/GET_ARTICLES_REJECTED'
+    GET_ARTICLES_REJECTED: 'ARTICLES/GET_ARTICLES_REJECTED',
+    SEARCH_ARTICLES: 'ARTICLES/SEARCH_ARTICLES'
 };
 
 const initialState = {
@@ -46,6 +47,10 @@ export const actionCreators = {
         payload: axios
             .get(queryByCategory(category))
             .then((result) => result.data.articles)
+    }),
+    searchArticles: (searchedText) => ({
+        type: actionTypes.SEARCH_ARTICLES,
+        payload: searchedText
     })
 };
 

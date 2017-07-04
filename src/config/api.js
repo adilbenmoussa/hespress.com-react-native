@@ -16,3 +16,9 @@ export const queryByCategory = (category) => {
     console.log('query', query);
     return query;
 }
+
+export const queryBySearchedText = (searchedText) => {
+    const query = `${API_ENTRY_POINT}?search_limit=20&search_sort_by=created&search_query=${searchedText}&pg=1`;
+    console.log('queryBySearchedText::query', query);
+    return query;
+}

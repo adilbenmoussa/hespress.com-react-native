@@ -17,6 +17,7 @@ import { filters } from './config/data';
 import { colors } from './config/colors';
 import MainPage from './Pages/MainPage';
 import ArticleDetailsPage from './Pages/ArticleDetailsPage';
+import SearchPage from './Pages/SearchPage';
 
 
 import { actionCreators as categoryActionCreators } from './reducers/categoryReducer';
@@ -31,6 +32,23 @@ const scenes = Actions.create(
         <Scene 
             key="ArticleDetailsPage" 
             component={ArticleDetailsPage} 
+            hideNavBar={false}
+            backButtonTextStyle={{
+                fontFamily: 'Al-Jazeera-Arabic',
+                fontSize:14,
+                color: colors.white
+            }}
+            leftButtonIconStyle={{
+                tintColor:colors.white
+            }}
+            navigationBarStyle={{
+                backgroundColor: colors.primary
+            }}
+            getTitle={() => ""}
+             />
+        <Scene 
+            key="SearchPage" 
+            component={SearchPage} 
             hideNavBar={false}
             backButtonTextStyle={{
                 fontFamily: 'Al-Jazeera-Arabic',
