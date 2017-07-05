@@ -87,7 +87,7 @@ class App extends Component {
 
     render() {
         return (
-            <Provider store={store}>
+            <Provider store={store} style={{flex: 1}}>
                 <ConnectedRouter scenes={scenes} />
             </Provider>
         );

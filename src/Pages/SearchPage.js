@@ -17,6 +17,7 @@ import ListEmpty from '../components/ListEmpty';
 import ArticleCard from '../components/ArticleCard';
 import { debounce } from 'lodash';
 import { Actions } from 'react-native-router-flux';
+import dimensions from '../config/dimensions';
 
 class SearchPage extends Component {
 
@@ -108,12 +109,12 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        height: 64,
+        height: dimensions.header.height,
         alignItems: 'center',
         justifyContent: 'space-between',
         backgroundColor: colors.primary,
         paddingHorizontal: 15,
-        paddingTop: 28,
+        paddingTop: dimensions.header.paddingTop,
     },
     searchIcon: {
         backgroundColor: 'transparent'

@@ -10,6 +10,7 @@ import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ArabicText from './ArabicText';
 import { colors } from '../config/colors';
+import dimensions from '../config/dimensions';
 
 class Header extends Component {
 
@@ -50,12 +51,12 @@ Header.propTypes = {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        height: 60,
+        height: dimensions.header.height,
         alignItems: 'center',
         justifyContent: 'space-between',
         backgroundColor: colors.primary,
         paddingHorizontal: 15,
-        paddingTop: 18
+        paddingTop: dimensions.header.paddingTop
     },
     title: {
         color: colors.white,
