@@ -17,10 +17,12 @@ import { Badge } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Header from '../components/Header';
 import ArabicText from '../components/ArabicText';
-import { colors, hexWithOpacity } from '../config/colors';
+import { colors, hexWithOpacity, getColorById } from '../config/colors';
 import { categories, categoriesWithMedia } from '../config/data';
 import { actionCreators as articlesActionCreators } from '../reducers/articlesReducer';
 import { imageUriByName, decodeHtml } from '../config/html';
+import ListEmpty from '../components/ListEmpty';
+import ArticleCard from '../components/ArticleCard';
 
 const window = Dimensions.get('window');
 
@@ -28,87 +30,25 @@ class ArticlesPages extends Component {
 
     _keyExtractor = (item, index) => item.id;
 
-    _getColorById(categoryId) {
-        const { selectedCategory } = this.props;
-        let color;
-        if (selectedCategory.id < 0) {
-            const category = categories.find((cat) => cat.id === categoryId);
-            if (!category) {
-                console.log('categoryId not found', categoryId);
-            }
-            color = category.color;
-        }
-        else {
-            color = selectedCategory.color;
-        }
-
-        return color;
-    }
-
     _renderItem({item}) {
-        color = hexWithOpacity(this._getColorById(item.category_id), 0.5);
+        const {selectedCategory} = this.props;
+        color = hexWithOpacity(getColorById(item.category_id, selectedCategory), 0.5);
         const mediaColor = hexWithOpacity(colors.white, 0.5);
         const hasMedia = categoriesWithMedia.indexOf(item.category_id) >= 0;
-        // Actions.
         return (
-            <TouchableWithoutFeedback
-                style={{flex:1}}
-                onPress={() => Actions.ArticleDetailsPage(item)}
-            >
-                <View style={styles.container}>
-                    <Image
-                        style={styles.image}
-                        source={{ uri: imageUriByName(item.image) }}
-                        >
-                        <View style={styles.imageOverlay}>
-                            {hasMedia && <Icon
-                                name="youtube-play"
-                                color={mediaColor}
-                                size={42}
-                                />
-                            }
-                        </View>
-                    </Image>
-                    <View style={styles.textContainer}>
-                        <Badge
-                            containerStyle={[styles.badge, { backgroundColor: color }]}>
-                            <ArabicText textStyle={styles.badgeText}>{item.category_name}</ArabicText>
-                        </Badge>
-                        <View>
-                            <ArabicText textStyle={styles.dateCreated}>{moment(item.created).fromNow()}</ArabicText>
-                            <ArabicText textStyle={styles.title}>{decodeHtml(item.title)}</ArabicText>
-                        </View>
-                    </View>
-                </View>
-            </TouchableWithoutFeedback>
-
+            <ArticleCard 
+                article={item}
+                categoryColor={color}
+            />
         );
     }
 
     _renderListEmptyComponent() {
         const { isPending, error } = this.props;
-        if (isPending) {
-            return (
-                <ActivityIndicator
-                    animating={true}
-                    color={colors.primary}
-                    size="large"
-                    style={styles.activityIndicator}
-                    />
-            )
-        }
-
-        if (error) {
-            return (
-                <View><Text>{error}</Text></View>
-            )
-        }
-
-        return <View textStyle={styles.artclesNoFoundContainer}>
-            <ArabicText textStyle={styles.artclesNoFound}>
-                لم يتم العثور على أية مقال
-            </ArabicText>
-        </View>
+        return <ListEmpty
+            isPending={isPending}
+            error={error}
+            />
     }
 
     _handleRefresh() {

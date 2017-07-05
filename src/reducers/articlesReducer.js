@@ -6,12 +6,16 @@ export const actionTypes = {
     GET_ARTICLES_PENDING: 'ARTICLES/GET_ARTICLES_PENDING',
     GET_ARTICLES_FULFILLED: 'ARTICLES/GET_ARTICLES_FULFILLED',
     GET_ARTICLES_REJECTED: 'ARTICLES/GET_ARTICLES_REJECTED',
-    SEARCH_ARTICLES: 'ARTICLES/SEARCH_ARTICLES'
+    SEARCH_ARTICLES_PENDING: 'ARTICLES/SEARCH_ARTICLES_PENDING',
+    SEARCH_ARTICLES: 'ARTICLES/SEARCH_ARTICLES',
+    SEARCH_ARTICLES_FULFILLED: 'ARTICLES/SEARCH_ARTICLES_FULFILLED',
+    SEARCH_ARTICLES_REJECTED: 'ARTICLES/SEARCH_ARTICLES_REJECTED',
 };
 
 const initialState = {
     isPending: false,
     articles: [],
+    searchedArticles: [],
     error: null
 };
 
@@ -29,6 +33,24 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 isPending: false,
                 articles: action.payload
+            }
+        case actionTypes.GET_ARTICLES_REJECTED:
+            return {
+                ...state,
+                isPending: false,
+                error: action.payload
+            }
+        case actionTypes.SEARCH_ARTICLES_PENDING:
+            return {
+                ...state,
+                searchedArticles: [],
+                isPending: true
+            }
+        case actionTypes.SEARCH_ARTICLES_FULFILLED:
+            return {
+                ...state,
+                isPending: false,
+                searchedArticles: action.payload
             }
         case actionTypes.GET_ARTICLES_REJECTED:
             return {

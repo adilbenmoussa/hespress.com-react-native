@@ -12,14 +12,17 @@ const query = async (searchedText) => {
 export function* searchArticles(action) {
     const searchedText = action.payload;
     try {
+        yield put({
+            type: actionTypes.SEARCH_ARTICLES_PENDING
+        });
         const response = yield call(query, searchedText);
         yield put({
-            type: actionTypes.GET_ARTICLES_FULFILLED,
+            type: actionTypes.SEARCH_ARTICLES_FULFILLED,
             payload: response || []
         })
     } catch (error) {
         yield put({
-            type: actionTypes.GET_ARTICLES_REJECTED,
+            type: actionTypes.SEARCH_ARTICLES_REJECTED,
             payload: error
         });
     }

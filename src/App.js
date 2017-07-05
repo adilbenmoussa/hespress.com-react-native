@@ -49,7 +49,7 @@ const scenes = Actions.create(
         <Scene 
             key="SearchPage" 
             component={SearchPage} 
-            hideNavBar={false}
+            hideNavBar={true}
             backButtonTextStyle={{
                 fontFamily: 'Al-Jazeera-Arabic',
                 fontSize:14,

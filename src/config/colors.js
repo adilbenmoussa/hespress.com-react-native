@@ -1,3 +1,5 @@
+import {categories} from '../config/data';
+
 export const colors = {
     primary: '#23438b',
     secondary: '#364654',
@@ -19,5 +21,21 @@ export const hexWithOpacity = (hex, opacity) => {
     } else {
         return "rgb(" + r + ", " + g + ", " + b + ")";
     }
+}
+
+export const getColorById = (categoryId, currentCategory) => {
+    let color;
+    if (currentCategory && currentCategory.id < 0) {
+        const category = categories.find((cat) => cat.id === categoryId);
+        if (!category) {
+            console.log('categoryId not found', categoryId);
+        }
+        color = category.color;
+    }
+    else {
+        color = currentCategory.color;
+    }
+
+    return color;
 }
 
