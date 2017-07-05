@@ -12,9 +12,9 @@ Note: the styles on android haven't finished it.
 
 ### 
 
-<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/final1.png" width="300">
-<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/final2.png" width="300">
-<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/final3.png" width="300">
+<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/final1.png" width="800">
+<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/final2.png" width="800">
+<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/final3.png" width="800">
 
 
 ## Lesson 13 - [Youtube video](https://youtu.be/8MSRurO4Sfc):
