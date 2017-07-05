@@ -1,7 +1,23 @@
 # hespress.com-react-native
 
+### Final Results - [Youtube playlist](https://www.youtube.com/channel/UCoEuFnwZ1aMYns1X8-KiACQ)
 
-## Lesson 13 - Youtube video:
+النتيجة النهائية للدروس  
+اكتب برنامج واحد يعطيك النتيجة في للايفون والاندرويد
+ملاحظة: ستايلات الاندرويد لم يتم اكمالها
+
+The result of my lessons on React-Native
+Write one code base, have two platforms supported, iOS and android.
+Note: the styles on android haven't finished it.
+
+### 
+
+<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/final1.png" width="300">
+<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/final2.png" width="300">
+<img src="https://raw.githubusercontent.com/adilbenmoussa/hespress.com-react-native/master/src/images/final3.png" width="300">
+
+
+## Lesson 13 - [Youtube video](https://youtu.be/8MSRurO4Sfc):
 * Android
 
 ## Lesson 12 - [Youtube video](https://youtu.be/YJV6f6sddSg):
